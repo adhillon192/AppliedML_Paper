@@ -1,0 +1,31 @@
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# PDF output
+*.pdf
+
+# VS Code LaTeX Workshop temp files
+.vscode/
+
+# If you're using latexmk
+latexmkrc
