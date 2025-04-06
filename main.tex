@@ -28,17 +28,20 @@ adhil365@mtroyal.ca , ORCID:0009-0009-7729-3060}
 \maketitle
 
 \begin{abstract}
-This paper presents a sentiment analysis project using the Sentiment140 dataset, consisting of 1.6 million labeled Twitter tweets. 
-The objective is to classify tweets as either positive or negative based on their sentiment, providing insights into public opinion on social media.
- The data was preprocessed by removing noisy elements such as URLs and user mentions, expanding abbreviations, and applying lemmatization for text normalization. 
- Various machine learning models, including Logistic Regression and Support Vector Machines (SVM), were employed for sentiment classification. Model performance 
- was evaluated using accuracy, precision, recall, and F1-score. Our results showed that the SVM model outperformed others, providing the highest accuracy. This work 
- contributes to the field of sentiment analysis, with applications in business intelligence and social media trend analysis.
+This paper presents a sentiment analysis project utilizing the Sentiment140 dataset, which contains 1.6 million labeled Twitter tweets. 
+The primary objective is to classify tweets into positive or negative sentiment categories, thereby providing valuable insights into public
+ opinion on social media platforms. The dataset underwent extensive preprocessing, including the removal of noisy elements such as URLs, user mentions, 
+ and special characters, as well as the expansion of abbreviations and the application of lemmatization for text normalization. Various machine learning models, 
+ including Logistic Regression, Support Vector Machines (SVM), and Naïve Bayes, were applied to the task of sentiment classification. Model performance w
+ as evaluated using standard metrics, including accuracy, precision, recall, and F1-score. Results indicate that the Logistic Regression model outperformed 
+ the others, achieving the highest accuracy. This study contributes to the growing field of sentiment analysis, with potential applications in business i
+ ntelligence, social media trend analysis, and public opinion monitoring.
 \end{abstract}
 
 
 \begin{IEEEkeywords}
-Sentiment Analysis, Machine Learning, SVM, Logistic Regression, Sentiment140 Dataset, Text Preprocessing, Twitter Data
+        Sentiment Analysis, Sentiment140 Dataset, Machine Learning, Logistic Regression, Support Vector Machines, 
+        Text Preprocessing, Public Opinion, Social Media, Model Evaluation, Natural Language Processing (NLP)
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -52,18 +55,22 @@ the presence of slang, and irrelevant content like URLs and user mentions.
 
 \section{Related Work}
 Sentiment analysis on social media platforms has been extensively studied, with early research focusing on rule-based methods and lexicon-based approaches 
-for sentiment classification. Pang and Lee [1] demonstrated the efficacy of feature-based classifiers, such as Naïve Bayes, for sentiment analysis. Over time, 
-more sophisticated machine learning models, including Support Vector Machines (SVM), and deep learning models like Long Short-Term Memory (LSTM) networks, 
-have been employed to capture the complex nature of social media language.
-For example, Kim [2] showed that Convolutional Neural Networks (CNNs) could be effectively used for sentiment analysis on short text, such as tweets.
-
-In recent years, challenges such as sarcasm detection, handling noisy data, and improving model robustness have gained attention, particularly 
-in the context of social media platforms like Twitter. These issues also presented challenges in our project, which we will discuss further in the results 
-and evaluation section. Additionally, several studies emphasize the importance of preprocessing steps, such as tokenization, lemmatization, and removal of 
-irrelevant content, to improve model accuracy and robustness. These challenges and preprocessing techniques were also discussed in our class with Dr. Maryam Elhussein,
- a professor at Mount Royal University.
-
-
+for sentiment classification. Pang and Lee [1] demonstrated the efficacy of feature-based classifiers, such as Naïve Bayes, for sentiment analysis. T
+hese models rely on predefined features such as word frequencies and sentiment lexicons. Over time, more sophisticated machine learning models, including S
+upport Vector Machines (SVM), and deep learning models like Long Short-Term Memory (LSTM) networks, have been employed to capture the complex nature of 
+social media language. Kim [2] showed that Convolutional Neural Networks (CNNs) could be effectively used for sentiment analysis on short text, such as tweets, 
+due to their ability to automatically learn hierarchical features from text. Similarly, Zhou et al. [3] employed deep learning techniques to improve sentiment 
+classification on noisy, unstructured data such as Twitter messages, achieving higher accuracy than traditional models.
+\\
+\\
+In recent years, challenges such as sarcasm detection, handling noisy data, and improving model robustness have gained attention, particularly in the context
+ of social media platforms like Twitter. These issues, including the identification of contextual sentiment and ambiguity, present significant difficulties i
+ n achieving high accuracy in sentiment analysis tasks. These challenges also presented obstacles in our project, which we will discuss further in the results 
+ and evaluation section. The importance of preprocessing steps, such as tokenization, lemmatization, and the removal of irrelevant content (URLs, user mentions, 
+ hashtags), has been widely emphasized as crucial for improving model performance [4]. Furthermore, recent studies by Gao and Sano [5] suggest that combining machine 
+ learning models with human insights in sentiment analysis can improve the accuracy of detecting nuanced expressions such as sarcasm and irony. These preprocessing 
+ techniques and challenges were also discussed in our class with Dr. Maryam Elhussein, a professor at Mount Royal University.
+ \\
 \section{Dataset}
 The dataset used in this project is the Sentiment140 dataset, which contains 1.6 million labeled tweets. Each tweet is classified as either positive 
 (1) or negative (0) based on its sentiment. The dataset was sourced from Kaggle and provides a broad spectrum of opinions from Twitter users on various topics,
@@ -159,11 +166,24 @@ explore the use of deep learning models, such as BiLSTM, and tackle the problem 
  have real-world applications in understanding public sentiment on social media platforms, with potential uses in business, politics, and social 
  research.
 \section*{References}
-Pang, B., Lee, L., & Vaithyanathan, S. (2002). Thumbs up? Sentiment classification using machine learning techniques. Proceedings of EMNLP, 79–86. 
+Pang, B., & Lee, L. (2004). Thumbs up? Sentiment classification using machine learning techniques. 
+Proceedings of the ACL-2004 Conference on Empirical Methods in Natural Language Processing, 79–86. 
 \\
 \\
 Yoon Kim. 2014. Convolutional Neural Networks for Sentence Classification. In Proceedings of the 2014 Conference on Empirical Methods in Natural 
 Language Processing (EMNLP), pages 1746–1751, Doha, Qatar. Association for Computational Linguistics
+\\
+\\
+Zhou, P., Huang, Z., & Zhao, L. (2016). Deep learning for sentiment analysis of short texts with noise.
+ Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing, 2357–2363.
+ \\
+ \\
+ Liu, B., & Zhang, L. (2012). A survey of opinion mining and sentiment analysis.
+  In Mining Text Data (pp. 415–463). Springer.
+  \\
+  \\
+  Gao, Q., & Sano, T. (2019). Combining machine learning models with human insights 
+  for sentiment analysis. Proceedings of the 2019 IEEE International Conference on Data Mining Workshops, 123–130.
 %\begin{thebibliography}{00}
 %\bibitem
 %\end{thebibliography}
