@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{float}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -69,33 +70,63 @@ The dataset used in this project is the Sentiment140 dataset, which contains 1.6
  ensuring a diverse range of linguistic patterns. This dataset was selected for its large size, availability, and its established status as a benchmark in s
  entiment analysis research. However, raw Twitter data presents several challenges, including the presence of URLs, user mentions, hashtags, and informal language. 
  These elements can be noisy and irrelevant to the sentiment classification task, necessitating extensive preprocessing.
-
+\\
+\\
 As part of the preprocessing process, we renamed the dataset columns to more meaningful labels: 'sentiment', 'ids', 'date', 'flag', 'user', and 'text'. 
 The dataset was then encoded using ISO-8859-1 encoding to handle special characters. We also converted sentiment values of 4 to 1, representing positive sentiment, 
-and replaced the remaining values with 0, indicating negative sentiment. To improve processing efficiency, we removed unnecessary columns and took a 25 percent
+and replaced the remaining values with 0, indicating negative sentiment. 
+\\
+\\
+To improve processing efficiency, we removed unnecessary columns and took a 25 percent
 fraction of the dataset to reduce its size, as the original dataset was very large. The final dataset, containing only the 'text' and 'sentiment' columns, was 
-stored in a list and converted to a Parquet format for faster access. To ensure data integrity, we verified the processed dataset by using dataset.head(), 
+stored in a list and converted to a Parquet format for faster access. 
+\\
+\\
+To ensure data integrity, we verified the processed dataset by using dataset.head(), 
 confirming the accuracy of our preprocessing steps. Finally, the distribution of sentiment labels was checked and found to be evenly split between positive 
 and negative tweets, ensuring a balanced dataset for model training.
 
 \section{Methods}
-n this study, we employed several machine learning techniques for sentiment classification: Logistic Regression, Support Vector Machines (SVM),
- and Naïve Bayes. These models were selected based on their proven effectiveness in text classification tasks. The process involved the following steps:
+In this study, we employed several machine learning techniques for sentiment classification: Logistic Regression, Support Vector Machines (SVM), and Naïve Bayes. 
+These models were selected based on their proven effectiveness in text classification tasks.
+ The preprocessing and data cleaning process was essential for ensuring that the raw data was suitable for analysis. 
+ To streamline this process, we encapsulated all the cleaning steps into a single function that called several sub-functions. 
+ \\ \\ 
 
-   \subsection{Data Cleaning:} 
-    The raw tweets were preprocessed to remove URLs, special characters, and user mentions. All tweets were converted to lowercase to ensure consistency.
+ These sub-functions performed various tasks, such as removing HTML tags, URLs, and punctuation, converting text to lowercase, replacing chat abbreviations, 
+ removing stopwords, and handling other common issues found in Twitter data. For stopwords, we used the nltk library. 
+ Additional functions were used for handling whitespace, special characters, and emojis, as well as expanding common contractions and lemmatizing the text.
+  We also loaded SpaCy to assist with text processing tasks.
 
-    \subsection{Text Normalization:}
-    Abbreviations, such as "brb" (be right back), were expanded to their full forms using a predefined dictionary. Additionally, emojis were replaced with descriptive words (e.g., "��" was changed to "happy").
-
-    \subsection{Lemmatization:}
-    Words were lemmatized using the WordNet lemmatizer to reduce variations of words to their base form (e.g., "running" → "run").
-
-    \subsection{Feature Engineering:}
-    The processed text was tokenized and vectorized using Term Frequency-Inverse Document Frequency (TF-IDF), which is commonly used for text classification.
-
-    \subsection{Model Training and Evaluation:}
-    Models were trained using the preprocessed data, and their performance was evaluated using metrics such as accuracy, precision, recall, and F1-score. Cross-validation was employed
+After performing these cleaning steps, we conducted exploratory data analysis (EDA) to better understand the data. 
+One of the first tasks was to generate a word frequency plot of the cleaned data, which revealed that words like “im” and “day” appeared most frequently, 
+as shown in Figure A. \\
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{assets/Word_Freq_Chart.png}
+        \caption{Word Frequency Chart}
+        \label{fig:word_freq_chart}
+    \end{figure}
+      
+\\
+To further analyze sentiment, we created two word clouds: the first represented the most frequent words in positive tweets (Figure B),
+ where the word "love" emerged as a dominant theme.
+ \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{assets/PositiveWorldCloud.png}
+        \caption{Word Frequency Chart}
+        \label{fig:word_freq_chart}
+    \end{figure} 
+    \\
+    The second word cloud depicted frequent words in negative tweets (Figure C), where the word "today" stood out. 
+ These visualizations provided useful insights into the linguistic patterns present in positive and negative sentiments.
+ \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{assets/NegativeWordCloud.png}
+        \caption{Word Frequency Chart}
+        \label{fig:word_freq_chart}
+    \end{figure}
+ \\
 \section{Results and Evaluation}
 The performance of the models was evaluated based on standard metrics used in classification tasks: accuracy, precision, recall, and F1-score. 
 The results are as follows:
