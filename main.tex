@@ -12,10 +12,10 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Conference Paper Title*\\
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
+\title{Sentiment Analysis on Twitter Using Machine Learning\\
+%{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
+%should not be used}
+%\thanks{Identify applicable funding agency here. If none, delete this.}
 }
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Amardeep Singh Dhillon}
@@ -114,8 +114,8 @@ To further analyze sentiment, we created two word clouds: the first represented 
  \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{assets/PositiveWorldCloud.png}
-        \caption{Word Frequency Chart}
-        \label{fig:word_freq_chart}
+        \caption{Positive Word Cloud}
+        \label{fig:PositiveWordCloud}
     \end{figure} 
     \\
     The second word cloud depicted frequent words in negative tweets (Figure C), where the word "today" stood out. 
@@ -123,39 +123,35 @@ To further analyze sentiment, we created two word clouds: the first represented 
  \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{assets/NegativeWordCloud.png}
-        \caption{Word Frequency Chart}
-        \label{fig:word_freq_chart}
+        \caption{Negative Word Cloud}
+        \label{fig:NegativeWordCloud}
     \end{figure}
  \\
 \section{Results and Evaluation}
-The performance of the models was evaluated based on standard metrics used in classification tasks: accuracy, precision, recall, and F1-score. 
-The results are as follows:
+Before training the machine learning models, we converted the tokenized text into Bag of Words features. 
+The dataset was split into an 80-20 training-to-testing ratio, with a random state of 42 to ensure reproducibility. 
+We limited the maximum number of features to 5000 to reduce dimensionality and enhance model efficiency. 
+The performance of the models was evaluated based on standard classification metrics: accuracy, precision, recall, and F1-score. 
+The results for these metrics, along with the confusion matrices, are provided in the attached figures. 
+The confusion matrices have been visualized in heatmaps and we will only provide the heatmap for Logistic Regression for better interpretation.
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{assets/LR_ConfusionMatrix.png}
+        \caption{Logistic Regression Confusion Matrix}
+        \label{fig:Logistic_Regression_Confusion_Matrix}
+    \end{figure}
 
-    Logistic Regression:
+For accuracy, the performance of the models was as follows: Logistic Regression achieved an accuracy of 77.55, 
+Naïve Bayes scored 76.52, and Support Vector Classifier (SVC) scored 75.93. These results indicate that all three models performed relatively well, 
+with Logistic Regression slightly outperforming the others. To evaluate the best-performing model, we saved it using pickle and later reloaded it for further analysis. 
+Using the glob library, we located the saved model file, and through the command line, we input text, which was classified as either positive or 
+negative sentiment.
 \\
-        Accuracy: 85%
 \\
-        Precision: 84%
-\\
-        Recall: 83%
-\\
-        F1-score: 83%
-\\
-    Support Vector Machine (SVM):
-\\
-        Accuracy: 88%
-\\
-        Precision: 87%
-\\
-        Recall: 86%
-\\
-        F1-score: 86%
-\\
-The SVM model outperformed Logistic Regression in all evaluation metrics, achieving the highest accuracy and better precision and recall scores. 
-A confusion matrix was also used to analyze the misclassifications, providing insights into how well the models differentiated between positive
- and negative tweets.
+However, one significant limitation we encountered during the evaluation process was the inability of the models to accurately handle sarcasm in the tweets. 
+This was evident in our tests, where sarcastic remarks were misclassified, reflecting the ongoing challenge of detecting sarcasm in sentiment analysis tasks.
 \section{conclusion}
-This project demonstrated the application of machine learning models to classify sentiment in Twitter tweets. The SVM model proved to be the 
+This project demonstrated the application of machine learning models to classify sentiment in Twitter tweets. The Logistic Regression model proved to be the 
 most effective in classifying the sentiment, providing better accuracy and recall than Logistic Regression. The key preprocessing steps—such as 
 lemmatization, URL removal, and emoji handling—were crucial in improving the models' performance. Despite these improvements, challenges remain, 
 particularly in detecting sarcasm and understanding the context of tweets, which are crucial for improving sentiment analysis. Future work could 
@@ -168,9 +164,9 @@ Pang, B., Lee, L., & Vaithyanathan, S. (2002). Thumbs up? Sentiment classificati
 \\
 Yoon Kim. 2014. Convolutional Neural Networks for Sentence Classification. In Proceedings of the 2014 Conference on Empirical Methods in Natural 
 Language Processing (EMNLP), pages 1746–1751, Doha, Qatar. Association for Computational Linguistics
-\begin{thebibliography}{00}
-\bibitem
-\end{thebibliography}
+%\begin{thebibliography}{00}
+%\bibitem
+%\end{thebibliography}
 \vspace{12pt}
 
 \end{document}
